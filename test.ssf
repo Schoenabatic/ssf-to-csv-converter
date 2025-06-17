@@ -1,0 +1,30 @@
+</document>
+<head>
+
+</head>
+<Sentence id='1'>
+1	((	NP	<fs name='NP' drel='k2:VGNF'>
+1.1	തൂവെള്ള	JJ	<fs af='തൂവെള്ള,adj,,,,,,' name='തൂവെള്ള'>
+1.2	നിറം	N__NN	<fs af='നിറം,n,ne,sg,3,d,0,0' name='നിറം'>
+	))
+2	((	VGNF	<fs name='VGNF' drel='vmod:VGNF2'>
+2.1	തൂകി	V__VM__VNF	<fs af='തൂക്,v,,,,,ഇ,i' name='തൂകി'>
+	))
+3	((	RBP	<fs name='RBP' drel='adv:VGNF2'>
+3.1	കൂട്ടമായി	RB	<fs af='കൂട്ടമായി,adv,,,,,,' name='കൂട്ടമായി'>
+	))
+</Sentence>
+
+<Sentence id='2'>
+1	((	NP	<fs name='NP' drel='k2:VGNF'>
+1.1	തൂവെള്ള	JJ	<fs af='തൂവെള്ള,adj,,,,,,' name='തൂവെള്ള'>
+1.2	നിറം	N__NN	<fs af='നിറം,n,ne,sg,3,d,0,0' name='നിറം'>
+	))
+2	((	VGNF	<fs name='VGNF' drel='vmod:VGNF2'>
+2.1	തൂകി	V__VM__VNF	<fs af='തൂക്,v,,,,,ഇ,i' name='തൂകി'>
+	))
+3	((	RBP	<fs name='RBP' drel='adv:VGNF2'>
+3.1	കൂട്ടമായി	RB	<fs af='കൂട്ടമായി,adv,,,,,,' name='കൂട്ടമായി'>
+	))
+</Sentence>
+</document>

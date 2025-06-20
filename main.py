@@ -7,7 +7,11 @@ csv_data = []
 sentence_data = []
 global_sentence_id = None
 
-
+token_id = None
+fs_name = None
+name = None
+drel = None
+fs_af = None
 
 for line in lines:
   
@@ -43,6 +47,7 @@ for line in lines:
   
   if( line.endswith('>\n') and len(sentence_data) >=4 ): # check if sentence end
     
+    sentence_data = [global_sentence_id, token_id, fs_name, name, fs_af]
     csv_data.append(sentence_data)
     sentence_data = []
     

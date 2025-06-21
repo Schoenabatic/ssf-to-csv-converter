@@ -1,8 +1,9 @@
 import csv 
+import os
 
 def ssf_to_csv(filepath):
 
-  file = open(filepath, 'r', encoding='utf-8') # try with 1.misc.depn.ssf
+  file = open(filepath, 'r', encoding='utf-8')
   lines = file.readlines()
 
   # * expected result : [1,1.1,NP,തൂവെള്ള,"തൂവെള്ള,adj,,,,,,",k2:VGNF]
@@ -55,8 +56,13 @@ def ssf_to_csv(filepath):
     writer.writerows(csv_data)
 
 if __name__ == "__main__":
-  ssf_to_csv("test.ssf")
+  directory = 'General'
+  
+  for file in os.listdir(directory):
+    if file.endswith(".ssf"):
+      ssf_to_csv(os.path.join(directory, file))
 
 
   
+
 

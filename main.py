@@ -32,35 +32,43 @@ def ssf_to_csv(filepath):
       
     if('name' in line and '((' not in line):
       name = line.strip().split("\t")[1]
+      pos = line.strip().split("\t")[2]
       sentence_data.append(name)
+      
       
     if ('drel' in line): #eg: k2:VGNF
       drel = line.strip().split("drel='")[1].split("'")[0]
       sentence_data.append(drel)
       
     if ('fs af' in line):
-      fs_af = line.strip().split("fs af='")[1].split("'")[0] # eg: നിറം,n,ne,sg,3,d,0,0
+      fs_af = line.strip().split("<")[1].split('>')[0] # eg: fs af='കഥകളി,n,ne,sg,3,d,ഉടെ,yuTe' name='കഥകളിയുടെ'
+     
       sentence_data.append(fs_af)
       
     if( line.endswith('>\n') and len(sentence_data) >=4 ): # check if sentence end
-      sentence_data = [global_sentence_id, token_id, fs_name, name, fs_af, drel]
+      sentence_data = [global_sentence_id, token_id, fs_name, name, pos, fs_af, drel]
       csv_data.append(sentence_data)
       sentence_data = []
       
     else: 
       pass
+    
+  
+  print(csv_data) # ! for testing purposes
       
-  with open(f'{filepath.split('.ssf')[0]}.csv', 'w', newline='', encoding='utf-8') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(['sentence_id', 'token_id', 'fs_name', 'name', 'fs_af', 'drel'])
-    writer.writerows(csv_data)
+  # with open(f'{filepath.split('.ssf')[0]}.csv', 'w', newline='', encoding='utf-8') as csvfile:
+  #   writer = csv.writer(csvfile)
+  #   writer.writerow(['sentence_id', 'token_id', 'fs_name', 'name', 'fs_af', 'drel'])
+  #   writer.writerows(csv_data)
 
 if __name__ == "__main__":
   directory = 'General'
   
-  for file in os.listdir(directory):
-    if file.endswith(".ssf"):
-      ssf_to_csv(os.path.join(directory, file))
+  ssf_to_csv("Code/test.ssf") #! for testing purposes
+  
+  # for file in os.listdir(directory):
+  #   if file.endswith(".ssf"):
+  #     ssf_to_csv(os.path.join(directory, file))
 
 
   

@@ -54,12 +54,20 @@ def ssf_to_csv(filepath):
       pass
     
   
-  print(csv_data) # ! for testing purposes
+  # print(csv_data) # ! for testing purposes
+  
+  print(filepath)
+  
+  output_path = 'Output'
+  if not os.path.exists(output_path): # check if output folder exists
+    os.makedirs(output_path)
+  
+  output_file = os.path.join(output_path, f"{os.path.basename(filepath).split('.ssf')[0]}.csv")
       
-  # with open(f'{filepath.split('.ssf')[0]}.csv', 'w', newline='', encoding='utf-8') as csvfile:
-  #   writer = csv.writer(csvfile)
-  #   writer.writerow(['sentence_id', 'token_id', 'fs_name', 'name', 'fs_af', 'drel'])
-  #   writer.writerows(csv_data)
+  with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(['sentence_id', 'token_id', 'fs_name', 'name', 'fs_af', 'drel'])
+    writer.writerows(csv_data)
 
 if __name__ == "__main__":
   directory = 'General'

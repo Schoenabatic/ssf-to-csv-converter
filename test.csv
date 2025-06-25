@@ -1,9 +1,0 @@
-sentence_id,token_id,fs_name,name,fs_af,drel
-1,1.1,NP,തൂവെള്ള,"തൂവെള്ള,adj,,,,,,",k2:VGNF
-1,1.2,NP,നിറം,"നിറം,n,ne,sg,3,d,0,0",k2:VGNF
-1,2.1,VGNF,തൂകി,"തൂക്,v,,,,,ഇ,i",vmod:VGNF2
-1,3.1,RBP,കൂട്ടമായി,"കൂട്ടമായി,adv,,,,,,",adv:VGNF2
-2,1.1,NP,തൂവെള്ള,"തൂവെള്ള,adj,,,,,,",k2:VGNF
-2,1.2,NP,നിറം,"നിറം,n,ne,sg,3,d,0,0",k2:VGNF
-2,2.1,VGNF,തൂകി,"തൂക്,v,,,,,ഇ,i",vmod:VGNF2
-2,3.1,RBP,കൂട്ടമായി,"കൂട്ടമായി,adv,,,,,,",adv:VGNF2

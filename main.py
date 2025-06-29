@@ -1,6 +1,20 @@
 import csv 
 import os
 
+
+def findParent(element, sentence):
+  
+  
+  element_sentence_id = element[0]  
+  parent = element[6].split(":")[1]
+  parent_chunk = parent[0:len(parent)-1] if parent[-1].isdigit() else parent
+  parent_position = parent[-1] if parent[-1].isdigit() else None
+  
+  for item in sentence:
+    if element_sentence_id == sentence[0][0]: # checks if both element and sentence have the same id
+      if item[2] == parent_chunk:
+        print(f'{item[1]} is the parent of {element}')
+
 def ssf_to_csv(filepath):
 
   file = open(filepath, 'r', encoding='utf-8')
@@ -8,15 +22,14 @@ def ssf_to_csv(filepath):
 
   # * expected result : [1,1.1,NP,തൂവെള്ള,"തൂവെള്ള,adj,,,,,,",k2:VGNF, parent: 3.1]
   csv_data = []
+  current_sentence = []
   sentence_data = []
   global_sentence_id = None
-  drel = 'Na'
+  drel = ''
 
-  # try:
-  for line in lines:
+  try:
+    for line in lines:
    
-      # print(f'line: {line.split(' ')}')
-      
       if (line.startswith('<Sentence')):
         global_sentence_id = line.split("id='")[1].split("'")[0] # get id from start of sentence
         
@@ -28,18 +41,16 @@ def ssf_to_csv(filepath):
         sentence_data.append(token_id)
         
       if ('fs name' in line ) or ('((' in line) :
-        fs_name = line.split('\t')[2] # eg: NP, BLK
-        sentence_data.append(fs_name)
+        chunk_type = line.split('\t')[2] # eg: NP, BLK
+        sentence_data.append(chunk_type)
         
-      if ('.' in line ) and (fs_name not in sentence_data): # add fs name to other token ids like 1.2 etc
-        sentence_data.append(fs_name)
-        
+      if ('.' in line ) and (chunk_type not in sentence_data): # add fs name to other token ids like 1.2 etc
+        sentence_data.append(chunk_type)
         
       if('name' in line and '((' not in line): #eg: പഴങ്ങളും
         name = line.strip().split("\t")[1]
         pos = line.strip().split("\t")[2]
         sentence_data.append(name)
-        
         
       elif 'fs' in line: 
         name = line.strip().split("\t")[1]
@@ -57,28 +68,28 @@ def ssf_to_csv(filepath):
         
         
       if ('fs af' in line):
-        print(line.strip().split("<"))
         fs_af = line.strip().split("<")[1].split('>')[0] # eg: fs af='കഥകളി,n,ne,sg,3,d,ഉടെ,yuTe' name='കഥകളിയുടെ'
         sentence_data.append(fs_af)
         
       if( line.endswith('>\n') and '.' in line): # check if sentence end
-        sentence_data = [global_sentence_id, token_id, fs_name, name, pos, fs_af, drel]
+        sentence_data = [global_sentence_id, token_id, chunk_type, name, pos, fs_af, drel]
+        current_sentence.append(sentence_data)
         csv_data.append(sentence_data)
+        
         sentence_data = []
+       
         
       else: 
         pass
       
-  # except:
-  #   print(f"An exception occurred on {line.title()}")  
+      
+  except:
+    print(f"An exception occurred on {line.title()}")  
+  
+
    
-    
-
-
-  
-  # print(csv_data) # ! for testing purposes
-  
-  # print(filepath)
+  # for item in csv_data:
+  #   findParent(item, csv_data)
   
   output_path = 'Output'
   if not os.path.exists(output_path): # check if output folder exists
@@ -102,7 +113,7 @@ def ssf_to_csv(filepath):
 if __name__ == "__main__":
   directory = 'General'
   
-  # ssf_to_csv("Code/corpora.depn.ssf") #! for testing purposes
+  # ssf_to_csv("Code/test.ssf") #! for testing purposes
   
   for file in os.listdir(directory):
     if file.endswith(".ssf"):
@@ -112,3 +123,4 @@ if __name__ == "__main__":
   
 
 
+  

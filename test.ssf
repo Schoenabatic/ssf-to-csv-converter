@@ -16,15 +16,20 @@
 </Sentence>
 
 <Sentence id='2'>
-1	((	NP	<fs name='NP' drel='k2:VGNF'>
-1.1	തൂവെള്ള	JJ	<fs af='തൂവെള്ള,adj,,,,,,' name='തൂവെള്ള'>
-1.2	നിറം	N__NN	<fs af='നിറം,n,ne,sg,3,d,0,0' name='നിറം'>
+1	((	NP	<fs name='NP' drel='r6:NP2'>
+1.1	കഥകളിയുടെ	N__NN	<fs af='കഥകളി,n,ne,sg,3,d,ഉടെ,yuTe' name='കഥകളിയുടെ'>
 	))
-2	((	VGNF	<fs name='VGNF' drel='vmod:VGNF2'>
-2.1	തൂകി	V__VM__VNF	<fs af='തൂക്,v,,,,,ഇ,i' name='തൂകി'>
+2	((	NP	<fs name='NP2' drel='k1:VGF'>
+2.1	സാഹിത്യരൂപം	N__NN	<fs af='സാഹിത്യരൂപം,n,ne,sg,3,d,0,0' name='സാഹിത്യരൂപം'>
 	))
-3	((	RBP	<fs name='RBP' drel='adv:VGNF2'>
-3.1	കൂട്ടമായി	RB	<fs af='കൂട്ടമായി,adv,,,,,,' name='കൂട്ടമായി'>
+3	((	VGF	<fs af='VGF,VGF,,,,,,' stype='declarative' voicetype='active' name='VGF'>
+3.1	ആണ്	V_VM_VF	<fs af='ആണ്,v,,,,,,' name='ആണ്'>
+	))
+4	((	NP	<fs name='NP3' drel='k1s:VGF'>
+4.1	ആട്ടക്കഥ	N__NN	<fs af='ആട്ടക്കഥ,n,ne,sg,3,d,0,0' name='ആട്ടക്കഥ'>
+	))
+5	((	BLK	<fs name='BLK' drel='rsym:VGF'>
+5.1	।	RD_PUNC	<fs af='।,punc,,,,,,' name='।'>
 	))
 </Sentence>
 </document>

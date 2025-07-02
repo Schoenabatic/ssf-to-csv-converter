@@ -1,20 +1,6 @@
 import csv 
 import os
 
-
-# def findParent(element, sentence):
-  
-  
-#   element_sentence_id = element[0]  
-#   parent = element[6].split(":")[1]
-#   parent_chunk = parent[0:len(parent)-1] if parent[-1].isdigit() else parent
-#   parent_position = parent[-1] if parent[-1].isdigit() else None
-  
-#   for item in sentence:
-#     if element_sentence_id == sentence[0][0]: # checks if both element and sentence have the same id
-#       if item[2] == parent_chunk:
-#         print(f'{item[1]} is the parent of {element}')
-
 def ssf_to_csv(filepath):
 
   file = open(filepath, 'r', encoding='utf-8')
@@ -27,8 +13,8 @@ def ssf_to_csv(filepath):
   global_sentence_id = None
   drel = ''
 
-  # try:
-  for line in lines:
+  try:
+    for line in lines:
    
       if (line.startswith('<Sentence')):
         global_sentence_id = line.split("id='")[1].split("'")[0] # get id from start of sentence
@@ -83,11 +69,9 @@ def ssf_to_csv(filepath):
         pass
       
       
-  # except:
-  #   print(f"An exception occurred on {line}")  
-  
-  # for item in csv_data:
-  #   findParent(item, csv_data)
+  except:
+    print(f"An exception occurred on {line}")  
+
   
   output_path = 'Output'
   if not os.path.exists(output_path): # check if output folder exists

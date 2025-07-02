@@ -2,18 +2,18 @@ import csv
 import os
 
 
-def findParent(element, sentence):
+# def findParent(element, sentence):
   
   
-  element_sentence_id = element[0]  
-  parent = element[6].split(":")[1]
-  parent_chunk = parent[0:len(parent)-1] if parent[-1].isdigit() else parent
-  parent_position = parent[-1] if parent[-1].isdigit() else None
+#   element_sentence_id = element[0]  
+#   parent = element[6].split(":")[1]
+#   parent_chunk = parent[0:len(parent)-1] if parent[-1].isdigit() else parent
+#   parent_position = parent[-1] if parent[-1].isdigit() else None
   
-  for item in sentence:
-    if element_sentence_id == sentence[0][0]: # checks if both element and sentence have the same id
-      if item[2] == parent_chunk:
-        print(f'{item[1]} is the parent of {element}')
+#   for item in sentence:
+#     if element_sentence_id == sentence[0][0]: # checks if both element and sentence have the same id
+#       if item[2] == parent_chunk:
+#         print(f'{item[1]} is the parent of {element}')
 
 def ssf_to_csv(filepath):
 
@@ -27,8 +27,8 @@ def ssf_to_csv(filepath):
   global_sentence_id = None
   drel = ''
 
-  try:
-    for line in lines:
+  # try:
+  for line in lines:
    
       if (line.startswith('<Sentence')):
         global_sentence_id = line.split("id='")[1].split("'")[0] # get id from start of sentence
@@ -42,6 +42,8 @@ def ssf_to_csv(filepath):
         
       if ('fs name' in line ) or ('((' in line) :
         chunk_type = line.split('\t')[2] # eg: NP, BLK
+        chunk_fs = line.strip().split('<')[1].split('>')[0]
+        sentence_data.append(chunk_fs)
         sentence_data.append(chunk_type)
         
       if ('.' in line ) and (chunk_type not in sentence_data): # add fs name to other token ids like 1.2 etc
@@ -61,18 +63,16 @@ def ssf_to_csv(filepath):
         pos = line.strip().split("\t")[2]
         sentence_data.append(name)
         
-        
       if ('drel' in line): #eg: k2:VGNF
         drel = line.strip().split("drel='")[1].split("'")[0]
         sentence_data.append(drel)
         
-        
       if ('fs af' in line):
-        fs_af = line.strip().split("<")[1].split('>')[0] # eg: fs af='കഥകളി,n,ne,sg,3,d,ഉടെ,yuTe' name='കഥകളിയുടെ'
-        sentence_data.append(fs_af)
+        word_fs = line.strip().split("<")[1].split('>')[0] # eg: fs af='കഥകളി,n,ne,sg,3,d,ഉടെ,yuTe' name='കഥകളിയുടെ'
+        sentence_data.append(word_fs)
         
       if( line.endswith('>\n') and '.' in line): # check if sentence end
-        sentence_data = [global_sentence_id, token_id, chunk_type, name, pos, fs_af, drel]
+        sentence_data = [global_sentence_id, token_id, chunk_type, name, pos, chunk_fs, word_fs, drel]
         current_sentence.append(sentence_data)
         csv_data.append(sentence_data)
         
@@ -83,11 +83,9 @@ def ssf_to_csv(filepath):
         pass
       
       
-  except:
-    print(f"An exception occurred on {line.title()}")  
+  # except:
+  #   print(f"An exception occurred on {line}")  
   
-
-   
   # for item in csv_data:
   #   findParent(item, csv_data)
   
@@ -105,7 +103,8 @@ def ssf_to_csv(filepath):
     "chunk_type",
     "word",
     "pos",
-    "fs",
+    "chunk_fs",
+    "word_fs",
     "drel"
 ])
     writer.writerows(csv_data)

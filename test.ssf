@@ -4,32 +4,24 @@
 </head>
 <Sentence id='1'>
 1	((	NP	<fs name='NP' drel='k2:VGNF'>
-1.1	തൂവെള്ള	JJ	<fs af='തൂവെള്ള,adj,,,,,,' name='തൂവെള്ള'>
-1.2	നിറം	N__NN	<fs af='നിറം,n,ne,sg,3,d,0,0' name='നിറം'>
+1.1	ലോകപൈതൃകമായി	JJ	<fs af='ലോകപൈതൃകമായി,adj,,,,,,' name='ലോകപൈതൃകമായി'>
+1.2	യുനെസ്കോ	N_NN	<fs af='യുനെസ്കോ,n,ne,sg,3,d,0,0' name='യുനെസ്കോ'>
 	))
-2	((	VGNF	<fs name='VGNF' drel='vmod:VGNF2'>
-2.1	തൂകി	V__VM__VNF	<fs af='തൂക്,v,,,,,ഇ,i' name='തൂകി'>
+2	((	VGNF	<fs af='VGNF,അംഗീകരി,v,,,,,ച്ച' tam='cca' head='അംഗീകരിച്ച' drel='nmod_relc:NP2' name='VGNF'>
+2.1	അംഗീകരിച്ച	V__VM__VNF	<fs af='അംഗീകരി,v,,,,,ച്ച,cca' name='അംഗീകരിച്ച'>
 	))
-3	((	RBP	<fs name='RBP' drel='adv:VGNF2'>
-3.1	കൂട്ടമായി	RB	<fs af='കൂട്ടമായി,adv,,,,,,' name='കൂട്ടമായി'>
+3	((	NP	<fs af='NP2,ഭാരതീയ,n,ne,sg,3,d,0' tam='0' head='ഭാരതീയ' drel='k1s:VGF' name='NP2'>
+3.1	ഭാരതീയ	N_NN	<fs af='ഭാരതീയ,n,ne,sg,3,d,0,0' name='ഭാരതീയ'>
+3.2	നൃത്തരൂപം	N_NN	<fs af='നൃത്തരൂപം,n,ne,sg,3,d,0,0' name='നൃത്തരൂപം'>
 	))
-</Sentence>
-
-<Sentence id='2'>
-1	((	NP	<fs name='NP' drel='r6:NP2'>
-1.1	കഥകളിയുടെ	N__NN	<fs af='കഥകളി,n,ne,sg,3,d,ഉടെ,yuTe' name='കഥകളിയുടെ'>
+4	((	VGF	<fs af='VGF,ആണ്,v,,,,,' head='ആണ്'name='VGF' type='declarative' voicetype='active'>
+4.1	ആണ്	V_VM_VF	<fs af='ആണ്,v,,,,,,' name='ആണ്'>
 	))
-2	((	NP	<fs name='NP2' drel='k1:VGF'>
-2.1	സാഹിത്യരൂപം	N__NN	<fs af='സാഹിത്യരൂപം,n,ne,sg,3,d,0,0' name='സാഹിത്യരൂപം'>
+5	((	NP	<fs af='NP3,കൂടിയാട്ടം,n,ne,sg,3,d,0' tam='0' head='കൂടിയാട്ടം' drel='k1:VGF' name='NP3'>
+5.1	കൂടിയാട്ടം	N_NN	<fs af='കൂടിയാട്ടം,n,ne,sg,3,d,0,0' name='കൂടിയാട്ടം'>
 	))
-3	((	VGF	<fs af='VGF,VGF,,,,,,' stype='declarative' voicetype='active' name='VGF'>
-3.1	ആണ്	V_VM_VF	<fs af='ആണ്,v,,,,,,' name='ആണ്'>
-	))
-4	((	NP	<fs name='NP3' drel='k1s:VGF'>
-4.1	ആട്ടക്കഥ	N__NN	<fs af='ആട്ടക്കഥ,n,ne,sg,3,d,0,0' name='ആട്ടക്കഥ'>
-	))
-5	((	BLK	<fs name='BLK' drel='rsym:VGF'>
-5.1	।	RD_PUNC	<fs af='।,punc,,,,,,' name='।'>
+6	((	BLK	<fs af='BLK,.,punc,,,,,' head='.2' drel='rsym:VGF' name='BLK'>
+6.1	.	RD_PUNC	<fs af='.,punc,,,,,,' name='.'>
 	))
 </Sentence>
 </document>
